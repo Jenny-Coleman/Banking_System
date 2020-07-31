@@ -11,6 +11,7 @@ package banking_system;
  */
 public class Banking_System {
 
+    public static float balance;
     /**
      * @param args the command line arguments
      */
