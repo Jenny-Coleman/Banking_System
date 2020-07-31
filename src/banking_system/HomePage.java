@@ -6,6 +6,9 @@
 
 package banking_system;
 
+import java.sql.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Our
@@ -164,7 +167,34 @@ public class HomePage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        String Username = JOptionPane.showInputDialog("Enter username");
+        Integer pin = Integer.parseInt(JOptionPane.showInputDialog("Enter pin number (4 digits)"));
+        Connection Con = null;
+        Statement st;
+        ResultSet rs;
+        String path = "BankingDatabase.mdb";
+        String url = "jdbc:ucanaccess://" + path;
+        try {
+            Con = DriverManager.getConnection(url);
+            st = Con.createStatement();
+            String sql = "SELECT * FROM Details WHERE Name = '" + Username + "'";
+            rs = st.executeQuery(sql);
+            while (rs.next()) {
+                String sName;
+                Integer iPin;
+                Float fBalance;
+                sName = rs.getString("Name");
+                iPin = rs.getInt("Pin");
+                fBalance = rs.getFloat("Balance");
+                if ((pin.equals(iPin)) && (Username.equals(sName))) {
+                    JOptionPane.showMessageDialog(null, "Your Balance is R " + Float.toString(fBalance));
+                } else {
+                    JOptionPane.showMessageDialog(null, "Password Does not Match or username is incorrect ");
+                }
+            }
+        } catch (Exception e) {
+            System.out.print(e);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateActionPerformed
