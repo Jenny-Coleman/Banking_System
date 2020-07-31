@@ -115,7 +115,7 @@ public class Withdraw extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "Successful update of student " + ID);
 
-            Main.con.close();
+            Banking_System.conn.close();
         }catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }

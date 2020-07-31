@@ -5,6 +5,11 @@
  */
 package banking_system;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,6 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class SignIn extends javax.swing.JFrame {
 
+    public static int ID;
     /**
      * Creates new form SignIn
      */
@@ -76,16 +82,45 @@ public class SignIn extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        String Password = "Password";
-        String password = JOptionPane.showInputDialog("Enter password");
-        while (!password.equals(Password)) {
-            password = JOptionPane.showInputDialog("Enter password");
-        }
-        if (password.equals(Password)) {
-            HomePage frmHomePage = new HomePage();
-            frmHomePage.setVisible(true);
-            this.dispose();        // TODO add your handling code here:
-    }                                        
+        String name = JOptionPane.showInputDialog("Enter name");
+        String password = JOptionPane.showInputDialog("Enter pin");
+        
+        try {
+            // creating connection
+            Banking_System bs = new Banking_System();
+            bs.DBConnection();
+
+            // executing the query
+            boolean exist = false;
+            String sql = "SELECT ID, Name, PIN FROM Details"; // gets all records
+            Statement stmt = Banking_System.conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            rs.beforeFirst();
+
+            // goes through every record
+            while (rs.next()) {
+            String username = rs.getString("Name");
+            String pin =  rs.getString("PIN");
+
+               // searches if entered logins equals the logins in the record
+               if ((name.equals(username)) || (password.equals(pin))) {
+                    exist = true;
+                    ID = rs.getInt("ID");
+                    // if they equal program goes to admin dashboard form
+                    new HomePage().setVisible(true);
+                    dispose();
+               }
+            } 
+
+            // close the execution
+            rs.close();
+            Banking_System.conn.close();
+            if(!exist){
+                   JOptionPane.showMessageDialog(null, "Please Check Name and PIN ");
+            } 
+        } catch (SQLException ex) {
+            Logger.getLogger(Banking_System.class.getName()).log(Level.SEVERE, null, ex);
+        }              
     }
     /**
      * @param args the command line arguments
