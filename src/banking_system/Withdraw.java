@@ -5,6 +5,10 @@
  */
 package banking_system;
 
+import java.sql.Blob;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author User
@@ -41,6 +45,11 @@ public class Withdraw extends javax.swing.JFrame {
         jLabel2.setText("Amount:");
 
         btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
         btnWithdraw.setText("Withdraw");
         btnWithdraw.addActionListener(new java.awt.event.ActionListener() {
@@ -92,8 +101,30 @@ public class Withdraw extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnWithdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWithdrawActionPerformed
-        // TODO add your handling code here:
+        float balance = Banking_System.balance;
+        float amount = Float.parseFloat(edtAmount.getText());
+        balance = balance - amount;
+        
+        try {
+            Banking_System bs = new Banking_System();
+            bs.DBConnection();
+            
+            String sql = "UPDATE tblstudent SET (Reports LIKE ?) WHERE (StudentID LIKE "+ID+")";
+            PreparedStatement stmt = Banking_System.conn.prepareStatement(sql);
+            stmt.setFloat(1, balance);
+
+            JOptionPane.showMessageDialog(null, "Successful update of student " + ID);
+
+            Main.con.close();
+        }catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
     }//GEN-LAST:event_btnWithdrawActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        new HomePage().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
      * @param args the command line arguments
