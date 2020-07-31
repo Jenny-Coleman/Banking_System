@@ -27,12 +27,12 @@ public class Banking_System {
     public static void DBConnection() {
         try
         {
-            Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-            String url = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=BankingDatabase";
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            String url = "jdbc:ucanaccess://src/BankingDatabase.mdb";
             conn = DriverManager.getConnection(url);
             JOptionPane.showMessageDialog(null, "Connection Successful!");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Connection Failed!" + e);
+            JOptionPane.showMessageDialog(null, "Connection Failed! " + e);
         }
     }
     
