@@ -104,16 +104,17 @@ public class Withdraw extends javax.swing.JFrame {
         float balance = Banking_System.balance;
         float amount = Float.parseFloat(edtAmount.getText());
         balance = balance - amount;
+        int id = SignIn.ID;
         
         try {
             Banking_System bs = new Banking_System();
             bs.DBConnection();
             
-            String sql = "UPDATE tblstudent SET (Reports LIKE ?) WHERE (StudentID LIKE "+ID+")";
+            String sql = "UPDATE tblstudent SET (Reports LIKE ?) WHERE (StudentID LIKE "+id+")";
             PreparedStatement stmt = Banking_System.conn.prepareStatement(sql);
             stmt.setFloat(1, balance);
 
-            JOptionPane.showMessageDialog(null, "Successful update of student " + ID);
+            JOptionPane.showMessageDialog(null, "Successful update of balance");
 
             Banking_System.conn.close();
         }catch (Exception ex) {
