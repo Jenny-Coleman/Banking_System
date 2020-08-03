@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class Banking_System {
 
-    public static float balance;
+    public static double balance;
     public static Connection conn;
     /**
      * @param args the command line arguments
@@ -27,9 +27,9 @@ public class Banking_System {
     public static void DBConnection() {
         try
         {
-            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-            String url = "jdbc:ucanaccess://src/BankingDatabase.mdb";
-            conn = DriverManager.getConnection(url);
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bankingdatabase", "root", "root");
+            System.out.println("Connection Successful!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Connection Failed! " + e);
         }

@@ -101,8 +101,8 @@ public class Withdraw extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnWithdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWithdrawActionPerformed
-        float balance = Banking_System.balance;
-        float amount = Float.parseFloat(edtAmount.getText());
+        double balance = Banking_System.balance;
+        double amount = Double.parseDouble(edtAmount.getText());
         balance = balance - amount;
         int id = SignIn.ID;
         
@@ -110,11 +110,12 @@ public class Withdraw extends javax.swing.JFrame {
             Banking_System bs = new Banking_System();
             bs.DBConnection();
             
-            String sql = "UPDATE tblstudent SET (Reports LIKE ?) WHERE (StudentID LIKE "+id+")";
+            String sql = "UPDATE details SET Balance = ? WHERE (ID = "+id+")";
             PreparedStatement stmt = Banking_System.conn.prepareStatement(sql);
-            stmt.setFloat(1, balance);
+            stmt.setDouble(1, balance);
+            stmt.execute();
 
-            JOptionPane.showMessageDialog(null, "Successful update of balance");
+            JOptionPane.showMessageDialog(null, "Successful update of balance" + id);
 
             Banking_System.conn.close();
         }catch (Exception ex) {

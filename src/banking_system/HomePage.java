@@ -95,13 +95,13 @@ public class HomePage extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Sitka Text", 1, 24)); // NOI18N
         jLabel3.setText("To Our Banking System");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/banking_system/again.PNG"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/again.PNG")));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/banking_system/again.PNG"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/again.PNG")));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/banking_system/again.PNG"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/again.PNG")));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/banking_system/again.PNG"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/again.PNG")));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -172,11 +172,10 @@ public class HomePage extends javax.swing.JFrame {
         Connection Con = null;
         Statement st;
         ResultSet rs;
-        String path = "BankingDatabase.mdb";
-        String url = "jdbc:ucanaccess://" + path;
         try {
-            Con = DriverManager.getConnection(url);
-            st = Con.createStatement();
+            Banking_System.DBConnection();
+            
+            st = Banking_System.conn.createStatement();
             String sql = "SELECT * FROM Details WHERE Name = '" + Username + "'";
             rs = st.executeQuery(sql);
             while (rs.next()) {
@@ -198,17 +197,18 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateActionPerformed
-Calculator frmCalculate = new Calculator();
-        frmCalculate.setVisible(true); 
-        this.dispose();// TODO add your handling code here:
+        Calculator frmCalculate = new Calculator();
+        frmCalculate.setVisible(true);
     }//GEN-LAST:event_btnCalculateActionPerformed
 
     private void btnWithdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWithdrawActionPerformed
-        // TODO add your handling code here:
+        new Withdraw().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnWithdrawActionPerformed
 
     private void edtDepositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtDepositActionPerformed
-        // TODO add your handling code here:
+        new Deposit().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_edtDepositActionPerformed
 
     /**

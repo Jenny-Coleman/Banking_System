@@ -87,12 +87,11 @@ public class SignIn extends javax.swing.JFrame {
         
         try {
             // creating connection
-            Banking_System bs = new Banking_System();
-            bs.DBConnection();
+            Banking_System.DBConnection();
 
             // executing the query
             boolean exist = false;
-            String sql = "SELECT ID, Name, Pin FROM Details"; // gets all records
+            String sql = "SELECT * FROM Details";
             Statement stmt = Banking_System.conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             rs.beforeFirst();
@@ -100,12 +99,14 @@ public class SignIn extends javax.swing.JFrame {
             // goes through every record
             while (rs.next()) {
             String username = rs.getString("Name");
-            String pin =  rs.getString("Pin");
+            String pin =  rs.getString("PIN");
 
                // searches if entered logins equals the logins in the record
                if ((name.equals(username)) || (password.equals(pin))) {
                     exist = true;
                     ID = rs.getInt("ID");
+                    System.out.println(ID);
+                    Banking_System.balance = rs.getDouble("Balance");
                     // if they equal program goes to admin dashboard form
                     new HomePage().setVisible(true);
                     this.dispose();
@@ -119,7 +120,7 @@ public class SignIn extends javax.swing.JFrame {
                    JOptionPane.showMessageDialog(null, "Please Check Name and PIN ");
             } 
         } catch (SQLException ex) {
-            Logger.getLogger(Banking_System.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex);
         }              
     }
     /**
