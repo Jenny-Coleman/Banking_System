@@ -30,7 +30,6 @@ public class Banking_System {
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
             String url = "jdbc:ucanaccess://src/BankingDatabase.mdb";
             conn = DriverManager.getConnection(url);
-            JOptionPane.showMessageDialog(null, "Connection Successful!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Connection Failed! " + e);
         }

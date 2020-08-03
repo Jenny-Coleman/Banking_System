@@ -92,7 +92,7 @@ public class SignIn extends javax.swing.JFrame {
 
             // executing the query
             boolean exist = false;
-            String sql = "SELECT ID, Name, PIN FROM Details"; // gets all records
+            String sql = "SELECT ID, Name, Pin FROM Details"; // gets all records
             Statement stmt = Banking_System.conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             rs.beforeFirst();
@@ -100,7 +100,7 @@ public class SignIn extends javax.swing.JFrame {
             // goes through every record
             while (rs.next()) {
             String username = rs.getString("Name");
-            String pin =  rs.getString("PIN");
+            String pin =  rs.getString("Pin");
 
                // searches if entered logins equals the logins in the record
                if ((name.equals(username)) || (password.equals(pin))) {
@@ -108,7 +108,7 @@ public class SignIn extends javax.swing.JFrame {
                     ID = rs.getInt("ID");
                     // if they equal program goes to admin dashboard form
                     new HomePage().setVisible(true);
-                    dispose();
+                    this.dispose();
                }
             } 
 
