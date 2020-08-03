@@ -115,7 +115,7 @@ public class Withdraw extends javax.swing.JFrame {
             stmt.setDouble(1, balance);
             stmt.execute();
 
-            JOptionPane.showMessageDialog(null, "Successful update of balance" + id);
+            JOptionPane.showMessageDialog(null, "Successful update of balance");
 
             Banking_System.conn.close();
         }catch (Exception ex) {
