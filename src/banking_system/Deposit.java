@@ -119,6 +119,8 @@ public class Deposit extends javax.swing.JFrame {
             PreparedStatement stmt = Banking_System.conn.prepareStatement(sql);
             stmt.setDouble(1, balance);
             stmt.execute();
+            
+            Banking_System.balance = balance;
 
             JOptionPane.showMessageDialog(null, "Successful update of balance");
 
