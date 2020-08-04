@@ -140,6 +140,7 @@ public class Tax_Calc extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateActionPerformed
@@ -159,7 +160,7 @@ public class Tax_Calc extends javax.swing.JFrame {
             double rate = Integer.parseInt(edtRate.getText());
             double result = 0.00;
             
-            result = before * (rate/100);
+            result = before * (1+(rate/100));
         
             edtAfter.setText(Double.toString(result));
         }

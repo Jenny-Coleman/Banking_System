@@ -176,6 +176,7 @@ public class Invest_Calc extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateActionPerformed
@@ -201,7 +202,7 @@ public class Invest_Calc extends javax.swing.JFrame {
             double result = 0.00;
             
             if (rbtnSimple.isSelected()) {
-                result = startAmt * (rate/100) *  time;
+                result = startAmt * (1 + ((rate/100) *  time));
             }
             if (rbtnCompound.isSelected()) {
                 result = startAmt * Math.pow(1 + (rate/100), time);
