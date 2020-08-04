@@ -50,6 +50,8 @@ public class Invest_Calc extends javax.swing.JFrame {
 
         jLabel2.setText("Starting Amount:");
 
+        edtStartAmount.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
         jLabel3.setText("After (years):");
 
         jLabel4.setText("Return rate (%)");
@@ -196,9 +198,9 @@ public class Invest_Calc extends javax.swing.JFrame {
         }
         
         if (valid) {
-            double startAmt = Integer.parseInt(edtStartAmount.getText());
-            double time = Integer.parseInt(edtTime.getText());
-            double rate = Integer.parseInt(edtRate.getText());
+            double startAmt = Double.parseDouble(edtStartAmount.getText());
+            double time = Double.parseDouble(edtTime.getText());
+            double rate = Double.parseDouble(edtRate.getText());
             double result = 0.00;
             
             if (rbtnSimple.isSelected()) {

@@ -124,7 +124,7 @@ public class Tax_Calc extends javax.swing.JFrame {
                         .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(116, 116, 116)
-                        .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -156,8 +156,8 @@ public class Tax_Calc extends javax.swing.JFrame {
         }
         
         if (valid) {
-            double before = Integer.parseInt(edtBefore.getText());
-            double rate = Integer.parseInt(edtRate.getText());
+            double before = Double.parseDouble(edtBefore.getText());
+            double rate = Double.parseDouble(edtRate.getText());
             double result = 0.00;
             
             result = before * (1+(rate/100));
