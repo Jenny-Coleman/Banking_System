@@ -32,7 +32,6 @@ public class HomePage extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         btnCalculate = new javax.swing.JButton();
         btnWithdraw = new javax.swing.JButton();
         edtDeposit = new javax.swing.JButton();
@@ -42,15 +41,24 @@ public class HomePage extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tAreaTransactions = new javax.swing.JTextArea();
+        edtBalance = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("frmHome"); // NOI18N
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(250, 250, 250));
         jLabel1.setText("WELCOME");
-
-        jLabel2.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
-        jLabel2.setText("Please Select An Option Below:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 37, -1, -1));
 
         btnCalculate.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         btnCalculate.setText(" Calculate");
@@ -61,6 +69,7 @@ public class HomePage extends javax.swing.JFrame {
                 btnCalculateActionPerformed(evt);
             }
         });
+        getContentPane().add(btnCalculate, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 220, 183, 44));
 
         btnWithdraw.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         btnWithdraw.setText(" Withdraw");
@@ -71,6 +80,7 @@ public class HomePage extends javax.swing.JFrame {
                 btnWithdrawActionPerformed(evt);
             }
         });
+        getContentPane().add(btnWithdraw, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 183, 44));
 
         edtDeposit.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         edtDeposit.setText(" Deposit");
@@ -81,9 +91,10 @@ public class HomePage extends javax.swing.JFrame {
                 edtDepositActionPerformed(evt);
             }
         });
+        getContentPane().add(edtDeposit, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 340, 183, 44));
 
         jButton2.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
-        jButton2.setText(" View Balance");
+        jButton2.setText("Refresh Balance");
         jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -91,105 +102,51 @@ public class HomePage extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 183, 44));
 
         jLabel3.setFont(new java.awt.Font("Sitka Text", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(250, 250, 250));
         jLabel3.setText("To Our Banking System");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(174, 89, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/again.PNG")));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 157, 40, 45));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/again.PNG")));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 220, 40, 44));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/again.PNG")));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 40, 44));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/again.PNG")));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 337, 40, 44));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(146, 146, 146)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(edtDeposit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnWithdraw, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCalculate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 17, Short.MAX_VALUE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(174, 174, 174))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jLabel3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(231, 231, 231))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addGap(36, 36, 36)
-                .addComponent(jLabel2)
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                    .addComponent(btnCalculate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                    .addComponent(btnWithdraw, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                    .addComponent(edtDeposit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(76, Short.MAX_VALUE))
-        );
+        tAreaTransactions.setEditable(false);
+        tAreaTransactions.setColumns(20);
+        tAreaTransactions.setRows(5);
+        jScrollPane1.setViewportView(tAreaTransactions);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 228, 333, 161));
+
+        edtBalance.setEditable(false);
+        getContentPane().add(edtBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 320, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stock graphs.jpg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 410));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String Username = JOptionPane.showInputDialog("Enter username");
-        Integer pin = Integer.parseInt(JOptionPane.showInputDialog("Enter pin number (4 digits)"));
-        Statement st;
-        ResultSet rs;
+        int id = Sign_In.ID;
+
         try {
             Banking_System.DBConnection();
             
-            st = Banking_System.conn.createStatement();
-            String sql = "SELECT * FROM Details WHERE Name = '" + Username + "'";
-            rs = st.executeQuery(sql);
-            while (rs.next()) {
-                String sName;
-                Integer iPin;
-                Float fBalance;
-                sName = rs.getString("Name");
-                iPin = rs.getInt("Pin");
-                fBalance = rs.getFloat("Balance");
-                if ((pin.equals(iPin)) && (Username.equals(sName))) {
-                    JOptionPane.showMessageDialog(null, "Your Balance is R " + Float.toString(fBalance));
-                } else {
-                    JOptionPane.showMessageDialog(null, "Password Does not Match or username is incorrect ");
-                }
-            }
+            double dbalance = Banking_System.balance;
+            edtBalance.setText("Your current balance is: R" + String.format("%10.2f", dbalance));
+            
         } catch (Exception e) {
             System.out.print(e);
         }
@@ -201,14 +158,70 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCalculateActionPerformed
 
     private void btnWithdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWithdrawActionPerformed
-        new Withdraw().setVisible(true);
-        this.dispose();
+        double amount = Double.parseDouble(JOptionPane.showInputDialog("Enter withdraw amount:", 0));
+        double balance = Banking_System.balance;
+        balance = balance - amount;
+        int id = Sign_In.ID;
+        
+        try {
+            Banking_System.DBConnection();
+            
+            String sql = "UPDATE details SET Balance = ? WHERE (ID = "+id+")";
+            PreparedStatement stmt = Banking_System.conn.prepareStatement(sql);
+            stmt.setDouble(1, balance);
+            stmt.execute();
+            
+            Banking_System.balance = balance;
+
+            JOptionPane.showMessageDialog(null, "Successful update of balance");
+
+            tAreaTransactions.setText(tAreaTransactions.getText() + "\n- R" + String.format("%10.2f", amount));
+            
+            Banking_System.conn.close();
+        }catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
     }//GEN-LAST:event_btnWithdrawActionPerformed
 
     private void edtDepositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtDepositActionPerformed
-        new Deposit().setVisible(true);
-        this.dispose();
+        double amount = Double.parseDouble(JOptionPane.showInputDialog("Enter deposit amount:", 0));
+        double balance = Banking_System.balance;
+        balance = balance + amount;
+        int id = Sign_In.ID;
+        
+        try {
+            Banking_System.DBConnection();
+            
+            String sql = "UPDATE details SET Balance = ? WHERE (ID = "+id+")";
+            PreparedStatement stmt = Banking_System.conn.prepareStatement(sql);
+            stmt.setDouble(1, balance);
+            stmt.execute();
+            
+            Banking_System.balance = balance;
+
+            JOptionPane.showMessageDialog(null, "Successful update of balance");
+
+            tAreaTransactions.setText(tAreaTransactions.getText() + "\n+ R" + String.format("%10.2f", amount));
+            
+            Banking_System.conn.close();
+        }catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
     }//GEN-LAST:event_edtDepositActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        int id = Sign_In.ID;
+
+        try {
+            Banking_System.DBConnection();
+            
+            double dbalance = Banking_System.balance;
+            edtBalance.setText("Your current balance is: R" + String.format("%10.2f", dbalance));
+            
+        } catch (Exception e) {
+            System.out.print(e);
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -248,6 +261,7 @@ public class HomePage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalculate;
     private javax.swing.JButton btnWithdraw;
+    private javax.swing.JTextField edtBalance;
     private javax.swing.JButton edtDeposit;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -257,5 +271,7 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea tAreaTransactions;
     // End of variables declaration//GEN-END:variables
 }
