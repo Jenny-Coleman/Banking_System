@@ -162,7 +162,7 @@ public class Tax_Calc extends javax.swing.JFrame {
             
             result = before * (1+(rate/100));
         
-            edtAfter.setText(Double.toString(result));
+            edtAfter.setText("R" + String.format("%10.2f", result));
         }
     }//GEN-LAST:event_btnCalculateActionPerformed
 

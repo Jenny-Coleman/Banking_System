@@ -210,7 +210,7 @@ public class Invest_Calc extends javax.swing.JFrame {
                 result = startAmt * Math.pow(1 + (rate/100), time);
             }
         
-            edtResult.setText(Double.toString(result));
+            edtResult.setText("R" + String.format("%10.2f", result));
         }
     }//GEN-LAST:event_btnCalculateActionPerformed
 
