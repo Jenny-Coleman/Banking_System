@@ -169,7 +169,6 @@ public class HomePage extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String Username = JOptionPane.showInputDialog("Enter username");
         Integer pin = Integer.parseInt(JOptionPane.showInputDialog("Enter pin number (4 digits)"));
-        Connection Con = null;
         Statement st;
         ResultSet rs;
         try {
