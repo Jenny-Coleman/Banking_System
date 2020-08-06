@@ -35,7 +35,7 @@ public class HomePage extends javax.swing.JFrame {
         btnCalculate = new javax.swing.JButton();
         btnWithdraw = new javax.swing.JButton();
         edtDeposit = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnLogOut = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -93,16 +93,16 @@ public class HomePage extends javax.swing.JFrame {
         });
         getContentPane().add(edtDeposit, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 340, 183, 44));
 
-        jButton2.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
-        jButton2.setText("Refresh Balance");
-        jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnLogOut.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        btnLogOut.setText("Log out");
+        btnLogOut.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnLogOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnLogOutActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 183, 44));
+        getContentPane().add(btnLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 183, 44));
 
         jLabel3.setFont(new java.awt.Font("Sitka Text", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(250, 250, 250));
@@ -138,19 +138,10 @@ public class HomePage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int id = Sign_In.ID;
-
-        try {
-            Banking_System.DBConnection();
-            
-            double dbalance = Banking_System.balance;
-            edtBalance.setText("Your current balance is: R" + String.format("%10.2f", dbalance));
-            
-        } catch (Exception e) {
-            System.out.print(e);
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
+        new Sign_In().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnLogOutActionPerformed
 
     private void btnCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateActionPerformed
         Calculator frmCalculate = new Calculator();
@@ -175,7 +166,8 @@ public class HomePage extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "Successful update of balance");
 
-            tAreaTransactions.setText(tAreaTransactions.getText() + "\n- R" + String.format("%10.2f", amount));
+            tAreaTransactions.setText(tAreaTransactions.getText() + "- R" + String.format("%10.2f", amount) + "\n");
+            edtBalance.setText("Your current balance is: R" + String.format("%10.2f", balance));
             
             Banking_System.conn.close();
         }catch (Exception ex) {
@@ -201,7 +193,8 @@ public class HomePage extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "Successful update of balance");
 
-            tAreaTransactions.setText(tAreaTransactions.getText() + "\n+ R" + String.format("%10.2f", amount));
+            tAreaTransactions.setText(tAreaTransactions.getText() + "+ R" + String.format("%10.2f", amount) + "\n");
+            edtBalance.setText("Your current balance is: R" + String.format("%10.2f", balance));
             
             Banking_System.conn.close();
         }catch (Exception ex) {
@@ -260,10 +253,10 @@ public class HomePage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalculate;
+    private javax.swing.JButton btnLogOut;
     private javax.swing.JButton btnWithdraw;
     private javax.swing.JTextField edtBalance;
     private javax.swing.JButton edtDeposit;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -102,7 +102,6 @@ public class Sign_In extends javax.swing.JFrame {
                if ((name.equals(username)) && (password.equals(pin))) {
                     exist = true;
                     ID = rs.getInt("ID");
-                    System.out.println(ID);
                     Banking_System.balance = rs.getDouble("Balance");
                     // if they equal program goes to admin dashboard form
                     new HomePage().setVisible(true);
