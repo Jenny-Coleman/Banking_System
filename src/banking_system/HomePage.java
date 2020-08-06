@@ -166,7 +166,7 @@ public class HomePage extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "Successful update of balance");
 
-            tAreaTransactions.setText(tAreaTransactions.getText() + "- R" + String.format("%10.2f", amount) + "\n");
+            tAreaTransactions.setText(tAreaTransactions.getText() + "-   R" + String.format("%10.2f", amount) + "\n");
             edtBalance.setText("Your current balance is: R" + String.format("%10.2f", balance));
             
             Banking_System.conn.close();
@@ -193,7 +193,7 @@ public class HomePage extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "Successful update of balance");
 
-            tAreaTransactions.setText(tAreaTransactions.getText() + "+ R" + String.format("%10.2f", amount) + "\n");
+            tAreaTransactions.setText(tAreaTransactions.getText() + "+  R" + String.format("%10.2f", amount) + "\n");
             edtBalance.setText("Your current balance is: R" + String.format("%10.2f", balance));
             
             Banking_System.conn.close();
