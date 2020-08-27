@@ -25,10 +25,18 @@ public class Banking_System {
     }
 
     public static void DBConnection() {
+        String serverhost = "garyperitus.dyndns.org";
+        String serverUname = "remote";
+        String serverPswd = "J4v4Gr0up1";
+        
+        String localhost = "localhost";
+        String localUname = "root";
+        String localPswd = "root";
+        
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://garyperitus.dyndns.org:3306/bankingdatabase", "remote", "J4v4Gr0up1");
+            conn = DriverManager.getConnection("jdbc:mysql://"+localhost+":3306/bankingdatabase", localUname, localPswd);
             System.out.println("Connection Successful!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Connection Failed! " + e);
